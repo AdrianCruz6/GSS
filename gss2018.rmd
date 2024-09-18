@@ -185,5 +185,6 @@ By looking at this graph, we can see compare each level of education to the diff
 
 # Discussion and Conclusion
 
+For all three questions, we had rejected the null hypothesis by showing statistical data and guaranteeing that the P-values were all under 0.05, resulting in all null hypothesis being rejected. In conclusion, we have statistical proof that people who own a gun are more likely to favor capital punishment, there is a difference in education between those who voted and did not vote in 2012, and that you are likely to score higher on the wordum test if you have a higher level of education. 
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
