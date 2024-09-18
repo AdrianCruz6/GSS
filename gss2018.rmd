@@ -73,7 +73,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-Since the P-value=0.02, we must reject the null hypothesis since it is lower than 0.05, meaning that gun ownership and capital punishment are related. In conclusion, the odds for people who own a gun favoring capital punishments is 2.271.
+Since the P-value=0.02, we must reject the null hypothesis since it is lower than 0.05, meaning that gun ownership and capital punishment are related. In conclusion, the odds for people who own a gun favoring capital punishments is 2.3:1.
 
 # Question 2
 
@@ -174,8 +174,16 @@ model1 <- aov(WORDSUM~DEGREE,data=GSSdata)
 summary.aov(model1)
 ```
 
+Because the P-value is 2.5e-07, which is lower the 0.05, we must reject the null hypothesis. This means that there is a relationship between how well you do on the wordsum test and the level of education you have. The higher education you have, the more likely you are to do well on the wordsum test. 
 
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+By looking at this graph, we can see compare each level of education to the difference in mean levels. For example, if we look at the bottom three (bachelors, junior college, graduates) we can conclude that there is no difference between them since they all pass through 0.
 
 # Discussion and Conclusion
+
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
