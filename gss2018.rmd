@@ -19,7 +19,7 @@ source("GrabData.R")
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?!-->
 
-The data in the dataframe GSSdata is from the 2018 General Social Survey. The first blocks of R-code has selected down a subset of the data to just 16 variables. It has further removed unwanted factor levels in much of the data. Examine the code in the GrabData.R file to see what it is doing. Some of the variables are categorical and others are numerical. Be sure to do a variable analysis before tackling each question.\
+The data in the dataframe GSSdata is from the 2018 General Social Survey. The first blocks of R-code has selected down a subset of the data to just 16 variables. It has further removed unwanted factor levels in much of the data. Examine the code in the GrabData.R file to see what it is doing. Some of the variables are categorical and others are numerical. Be sure to do a variable analysis before tackling each question.
 First question - Is opinion on the death penalty (CAPPUN) independent of gun ownership (OWNGUN)?
 
 ## Methods
@@ -28,10 +28,10 @@ First question - Is opinion on the death penalty (CAPPUN) independent of gun own
 
 Question: Is gun ownership independent of opinion on capital punishment?
 
-$H_0$: Gun ownership and opinion on capital punishment are not related.
+$H_0$: Gun ownership and opinion on capital punishment are not related.        
 $H_A$: Gun ownership and opinion on capital punishment are related.
 
-OWNGUN \~ CAPPUN both are categorical, thus use Cat_Cat.
+OWNGUN ~ CAPPUN both are categorical, thus use Cat~Cat.
 
 ##Results
 
@@ -48,6 +48,7 @@ barchartGC(~OWNGUN + CAPPUN,data=GSSdata)
 barchartGC(~OWNGUN + CAPPUN,data=GSSdata, type="percent")
 
 ```
+
 People who own a gun are more likley to favor capital punishment. 
 
 #### Numerical Descriptive Results
@@ -86,10 +87,10 @@ Is there a difference in years of education (EDUC) between the those who did or 
 
 Is there a difference between years of education between those who voted and did not vote in 2012?
 
-$H_0$: There is no difference in EDUC between those who voted and did not vote in 2012.
+$H_0$: There is no difference in EDUC between those who voted and did not vote in 2012.      
 $H_A$: There is a difference in EDUC between those who voted and did not vote in 2012.
 
-EDUC\~VOTE12 NUMERICAL\~CATEGORIAL, thus use Numerical\~Cat
+EDUC~VOTE12 NUMERICAL~CATEGORIAL, thus use Numerical~Cat
 
 ##Results
 
@@ -133,6 +134,14 @@ Determine if a persons performance on the wordsum test (WORDSUM) is independent 
 
 ## Methods
 
+Is a persons performance on the Wordsum test (WORDSUM) independent of with their level of schooling (DEGREE)?
+
+$H_0$: A persons performance on a wordsum test(WORDSUM) is independent of their schooling(DEGREE).  
+
+$H_A$: A persons performance on a wordsum test (WORDSUM) is dependent on their schooling(DEGREE).
+
+WORDSUM~DEGREE NUMERICAL~CATAGORIAL, thus use Numerical~Cat
+
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method.!-->
 
 ##Results
@@ -143,15 +152,29 @@ Determine if a persons performance on the wordsum test (WORDSUM) is independent 
 
 #### Graphical Descriptive Results
 
+```{r}
+plot(WORDSUM~DEGREE,data=GSSdata)
+```
+
+This diagram shows that as you that increase your schooling (Degree) so does your score on the wordsum test. We see that it slowly increases the score with more education but we can also see that people in Junior College and people between junior college and graduation seem to score reasonably the same score on the WORDSUM. 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
 
 #### Numerical Descriptive Results
-
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+```{r}
+favstats(WORDSUM~DEGREE,data=GSSdata)
+```
+
+From this chart we can conclude that the difference between education does affect your score. The average WORDSUM mean seems to be increasing by one with the higher education you achieve, showing a difference in test scores. You can also compare the Min to Max which is drastically different from one another if taking the data from people in HighSchool and people who Graduated. Taking the WORDSUM in highSchool averaged with the Min of 2 and a max of 12 while graduates scored a min of 7 and a max of 12, therefore showing the difference.
 
 ### Inferential Results
-
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+```{r}
+model1 <- aov(WORDSUM~DEGREE,data=GSSdata)
+summary.aov(model1)
+```
+
+
 
 # Discussion and Conclusion
 
